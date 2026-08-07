@@ -16,11 +16,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Context\" />
-    <Folder Include="Configurations\" />
-    <Folder Include="Identity\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
