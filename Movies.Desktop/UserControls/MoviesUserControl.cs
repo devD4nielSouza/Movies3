@@ -16,5 +16,10 @@ namespace Movies.Desktop.UserControls
         {
             InitializeComponent();
         }
+
+        private void MoviesUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
