@@ -26,12 +26,6 @@ namespace Movies.Application.Services
             return movie == null ? null : MapToDto(movie);
         }
 
-        public async Task<IEnumerable<MovieDto>> GetFeaturedAsync()
-        {
-            var movies = await _movieRepository.GetFeaturedAsync();
-            return movies.Select(MapToDto);
-        }
-
         public async Task<IEnumerable<MovieDto>> GetByCategoryAsync(int categoryId)
         {
             var movies = await _movieRepository.GetByCategoryAsync(categoryId);
