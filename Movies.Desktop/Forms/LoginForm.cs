@@ -21,5 +21,10 @@ namespace Movies.Desktop.Forms
         {
 
         }
+
+        private void pbLogo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -57,12 +57,13 @@
             // pbLogo
             // 
             pbLogo.Image = (Image)resources.GetObject("pbLogo.Image");
-            pbLogo.Location = new Point(56, 12);
+            pbLogo.Location = new Point(53, 12);
             pbLogo.Name = "pbLogo";
             pbLogo.Size = new Size(259, 159);
             pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             pbLogo.TabIndex = 0;
             pbLogo.TabStop = false;
+            pbLogo.Click += pbLogo_Click;
             // 
             // btnFechar
             // 
@@ -178,7 +179,7 @@
             pnSeparador.BackColor = SystemColors.ActiveCaption;
             pnSeparador.BorderStyle = BorderStyle.FixedSingle;
             pnSeparador.ForeColor = SystemColors.InactiveCaptionText;
-            pnSeparador.Location = new Point(27, 394);
+            pnSeparador.Location = new Point(35, 394);
             pnSeparador.Name = "pnSeparador";
             pnSeparador.Size = new Size(309, 1);
             pnSeparador.TabIndex = 9;
