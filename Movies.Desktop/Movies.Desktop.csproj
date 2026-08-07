@@ -9,17 +9,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Themes\**" />
+    <EmbeddedResource Remove="Themes\**" />
+    <None Remove="Themes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.8" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Movies.Application\Movies.Application.csproj" />
     <ProjectReference Include="..\Movies.Infraestructure\Movies.Infraestructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Forms\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="UserControls\" />
-    <Folder Include="Themes\" />
-    <Folder Include="Services\" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
