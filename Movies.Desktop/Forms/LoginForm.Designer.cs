@@ -63,7 +63,6 @@
             pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             pbLogo.TabIndex = 0;
             pbLogo.TabStop = false;
-            pbLogo.Click += pbLogo_Click;
             // 
             // btnFechar
             // 
@@ -81,6 +80,7 @@
             btnFechar.Size = new Size(31, 30);
             btnFechar.TabIndex = 1;
             btnFechar.Text = "❌";
+            btnFechar.Click += btnFechar_Click;
             // 
             // txtEmail
             // 

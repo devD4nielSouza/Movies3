@@ -17,14 +17,14 @@ namespace Movies.Desktop.Forms
             InitializeComponent();
         }
 
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        } 
+
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void pbLogo_Click(object sender, EventArgs e)
-        {
-
+            
         }
     }
 }

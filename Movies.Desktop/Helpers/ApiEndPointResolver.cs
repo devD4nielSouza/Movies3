@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Movies.Desktop.Helpers
 {
-    internal class ApiEndPointResolver
+    public class ApiEndPointResolver
     {
+        private static string? _resolvedUrl;
+        private static bool _resolved = false;
+
+        private const string ApiProjectName = "Movies.API";
     }
 }
