@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Application.DTOs
 {
-    public class MovieDto
+    public class MoviesDto
     {
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;

@@ -101,6 +101,7 @@
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges3;
             txtEmail.Size = new Size(257, 36);
             txtEmail.TabIndex = 2;
+            txtEmail.KeyDown += txtEmail_KeyDown;
             // 
             // txtSenha
             // 
@@ -122,6 +123,7 @@
             txtSenha.Size = new Size(257, 36);
             txtSenha.TabIndex = 2;
             txtSenha.UseSystemPasswordChar = true;
+            txtSenha.KeyDown += txtSenha_KeyDown;
             // 
             // lblEmail
             // 
@@ -162,7 +164,7 @@
             btnEntrar.Size = new Size(137, 42);
             btnEntrar.TabIndex = 4;
             btnEntrar.Text = "Entrar";
-            btnEntrar.Click += btnEntrar_Click;
+           
             // 
             // lblVersao
             // 

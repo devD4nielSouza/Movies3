@@ -18,14 +18,14 @@ namespace Movies.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MovieDto>>> GetAll()
+        public async Task<ActionResult<IEnumerable<MoviesDto>>> GetAll()
         {
             var movies = await _movieService.GetAllAsync();
             return Ok(movies);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<MovieDto>> GetById(int id)
+        public async Task<ActionResult<MoviesDto>> GetById(int id)
         {
             var movie = await _movieService.GetByIdAsync(id);
             if (movie == null)
@@ -36,7 +36,7 @@ namespace Movies.API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<MovieDto>> Create([FromBody] CreateMovieDto dto)
+        public async Task<ActionResult<MoviesDto>> Create([FromBody] CreateMovieDto dto)
         {
             var movie = await _movieService.CreateAsync(dto);
 

@@ -14,25 +14,25 @@ namespace Movies.Application.Services
             _movieRepository = movieRepository;
         }
 
-        public async Task<IEnumerable<MovieDto>> GetAllAsync()
+        public async Task<IEnumerable<MoviesDto>> GetAllAsync()
         {
             var movies = await _movieRepository.GetAllAsync();
             return movies.Select(MapToDto);
         }
 
-        public async Task<MovieDto?> GetByIdAsync(int id)
+        public async Task<MoviesDto?> GetByIdAsync(int id)
         {
             var movie = await _movieRepository.GetByIdAsync(id);
             return movie == null ? null : MapToDto(movie);
         }
 
-        public async Task<IEnumerable<MovieDto>> GetByCategoryAsync(int categoryId)
+        public async Task<IEnumerable<MoviesDto>> GetByCategoryAsync(int categoryId)
         {
             var movies = await _movieRepository.GetByCategoryAsync(categoryId);
             return movies.Select(MapToDto);
         }
 
-        public async Task<MovieDto> CreateAsync(CreateMovieDto dto)
+        public async Task<MoviesDto> CreateAsync(CreateMovieDto dto)
         {
             // Mapeia o DTO de criação para a entidade Movie
             var movie = new Movie
@@ -51,7 +51,7 @@ namespace Movies.Application.Services
             return MapToDto(movie);
         }
 
-        public async Task<MovieDto?> UpdateAsync(int id, UpdateMovieDto dto)
+        public async Task<MoviesDto?> UpdateAsync(int id, UpdateMovieDto dto)
         {
             var movie = await _movieRepository.GetByIdAsync(id);
             if (movie == null) return null;
@@ -81,9 +81,9 @@ namespace Movies.Application.Services
             return await _movieRepository.CountAsync();
         }
 
-        private static MovieDto MapToDto(Movie movie)
+        private static MoviesDto MapToDto(Movie movie)
         {
-            return new MovieDto
+            return new MoviesDto
             {
                 Id = movie.Id,
                 Title = movie.Title,
