@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Desktop.DTOs
 {
-    internal class Class1
+    internal class CategoryDto
     {
     }
 }
