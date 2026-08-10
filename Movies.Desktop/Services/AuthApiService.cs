@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Movies.Desktop.Helpers
+namespace Movies.Desktop.Services
 {
-    public class HttpClientHelper
+    public class AuthApiService
     {
+        private readonly
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Desktop.Helpers
 {
-    internal class AppConfig
+    public class AppConfig
     {
     }
 }
