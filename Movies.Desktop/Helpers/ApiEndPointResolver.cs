@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Movies.Desktop.Helpers
 {
-    public class ApiEndPointResolver
+    public static class ApiEndPointResolver
     {
-        private static string? _resolvedUrl;
-        private static bool _resolved = false;
-
-        private const string ApiProjectName = "Movies.API";
+        
+       // Endereço onde a API está rodando
+            private const string ApiUrl = "http://localhost:5254";
+            // Retorna o endereço da API
+            public static string Resolve()
+            { return ApiUrl; }
+      
     }
 }

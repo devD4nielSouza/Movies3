@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Movies.Desktop.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,11 +21,18 @@ namespace Movies.Desktop.Forms
         private void btnFechar_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
-        } 
+
+
+        }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+         
         }
     }
 }

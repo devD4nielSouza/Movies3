@@ -8,6 +8,6 @@ namespace Movies.Desktop.Services
 {
     public class AuthApiService
     {
-        private readonly
+    
     }
 }
