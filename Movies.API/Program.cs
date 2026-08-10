@@ -1,18 +1,16 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Movies.Application.Interfaces;
 using Movies.Application.Services;
 using Movies.Domain.Interfaces;
 using Movies.Infraestructure.Context;
 using Movies.Infraestructure.Identity;
 using Movies.Infraestructure.Repositories;
-using System.Numerics;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<MoviesDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
