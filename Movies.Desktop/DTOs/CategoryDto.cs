@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Movies.Desktop.DTOs
+﻿namespace Movies.Desktop.DTOs
 {
-    internal class CategoryDto
+    public class CategoryResponseDto
     {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public int GameCount { get; set; }
     }
+
+    public class CreteCategoryDto
+    {
+        public string Name { get; set; } = string.Empty;
+    }
+
+    public class UpdateCategoryDto
+    {
+        public string Name { get; set; } = string.Empty;
+    }
+
 }
