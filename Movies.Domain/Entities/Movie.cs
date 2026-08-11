@@ -11,5 +11,8 @@
         public DateTime CreatedAt { get; set; }
 
         public virtual Category? Category { get; set; }
+
+        public string Classification { get; set; } = string.Empty;
+        public int Duration { get; set; }
     }
 }

@@ -35,7 +35,7 @@
             pnlConteudo = new Panel();
             pnlHeader = new Panel();
             lblTituloApp = new Label();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            btnSair = new Guna.UI2.WinForms.Guna2Button();
             pnlLogo = new Panel();
             panel2 = new Panel();
             lblSidebarSub = new Label();
@@ -59,7 +59,7 @@
             // pnlHeader
             // 
             pnlHeader.Controls.Add(lblTituloApp);
-            pnlHeader.Controls.Add(guna2Button1);
+            pnlHeader.Controls.Add(btnSair);
             pnlHeader.Location = new Point(166, 0);
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Size = new Size(839, 84);
@@ -76,23 +76,24 @@
             lblTituloApp.TabIndex = 5;
             lblTituloApp.Text = "🎬MOVIE";
             // 
-            // guna2Button1
+            // btnSair
             // 
-            guna2Button1.BorderRadius = 5;
-            guna2Button1.CustomizableEdges = customizableEdges1;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.FromArgb(87, 17, 116);
-            guna2Button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(711, 19);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Button1.Size = new Size(100, 32);
-            guna2Button1.TabIndex = 2;
-            guna2Button1.Text = "Sair";
+            btnSair.BorderRadius = 5;
+            btnSair.CustomizableEdges = customizableEdges1;
+            btnSair.DisabledState.BorderColor = Color.DarkGray;
+            btnSair.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSair.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSair.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSair.FillColor = Color.FromArgb(87, 17, 116);
+            btnSair.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSair.ForeColor = Color.White;
+            btnSair.Location = new Point(711, 19);
+            btnSair.Name = "btnSair";
+            btnSair.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnSair.Size = new Size(100, 32);
+            btnSair.TabIndex = 2;
+            btnSair.Text = "Sair";
+            btnSair.Click += btnSair_Click;
             // 
             // pnlLogo
             // 
@@ -150,11 +151,11 @@
             // lblSessao
             // 
             lblSessao.AutoSize = true;
-            lblSessao.Font = new Font("Century Gothic", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSessao.Font = new Font("Century Schoolbook", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSessao.ForeColor = Color.White;
             lblSessao.Location = new Point(12, 386);
             lblSessao.Name = "lblSessao";
-            lblSessao.Size = new Size(16, 15);
+            lblSessao.Size = new Size(19, 16);
             lblSessao.TabIndex = 3;
             lblSessao.Text = "...";
             // 
@@ -175,6 +176,7 @@
             btnFilmes.Size = new Size(141, 32);
             btnFilmes.TabIndex = 2;
             btnFilmes.Text = "🎞️Filmes";
+            btnFilmes.Click += btnFilmes_Click;
             // 
             // panel1
             // 
@@ -197,6 +199,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm";
             Text = "MainForm";
+            Load += MainForm_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             pnlLogo.ResumeLayout(false);
@@ -211,7 +214,7 @@
         private Panel pnlConteudo;
         private Panel pnlHeader;
         private Label lblTituloApp;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnSair;
         private Panel pnlLogo;
         private Panel panel2;
         private Label lblSidebarSub;

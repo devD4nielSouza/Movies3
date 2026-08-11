@@ -50,7 +50,6 @@
             lblCarregando = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             lblFacaLogin = new Label();
-            guna2BorderlessForm2 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
             // 
@@ -164,7 +163,6 @@
             btnEntrar.Size = new Size(137, 42);
             btnEntrar.TabIndex = 4;
             btnEntrar.Text = "Entrar";
-           
             // 
             // lblVersao
             // 
@@ -228,12 +226,6 @@
             lblFacaLogin.TabIndex = 3;
             lblFacaLogin.Text = "Acesse sua conta ";
             // 
-            // guna2BorderlessForm2
-            // 
-            guna2BorderlessForm2.ContainerControl = this;
-            guna2BorderlessForm2.DockIndicatorTransparencyValue = 0.6D;
-            guna2BorderlessForm2.TransparentWhileDrag = true;
-            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -277,6 +269,5 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lblCarregando;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Label lblFacaLogin;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm2;
     }
 }

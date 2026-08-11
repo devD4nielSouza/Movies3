@@ -17,6 +17,8 @@ namespace Movies.Application.DTOs
         public string CategoryName { get; set; } = string.Empty;
         public string CoverImageUrl { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
+        public string Classification { get; set; } = string.Empty;
+        public int Duration { get; set; }
     }
 
     public class UpdateMovieDto
@@ -26,6 +28,9 @@ namespace Movies.Application.DTOs
         public int ReleaseDate { get; set; }
         public string CoverImageUrl { get; set; } = string.Empty;
         public int CategoryId { get; set; }
+
+        public string Classification { get; set; } = string.Empty;
+        public int Duration { get; set; }
     }
 
     public class CreateMovieDto
@@ -35,5 +40,8 @@ namespace Movies.Application.DTOs
         public string Description { get; set; } = string.Empty;
         public int ReleaseDate { get; set; }
         public int CategoryId { get; set; }
+
+        public string Classification { get; set; } = string.Empty;
+        public int Duration { get; set; }
     }
 }
