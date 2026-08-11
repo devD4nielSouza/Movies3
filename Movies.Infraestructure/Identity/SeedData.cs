@@ -161,7 +161,7 @@ namespace Movies.Infraestructure.Identity
             // O UserManager é o serviço do Identity para gerenciar usuários.
             // Ele permite criar, buscar, atualizar e deletar usuários.
             // =====================================================================
-            var adminEmail = "admin@email.com";
+            var adminEmail = "admin@Movies.com";
             var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
             if (adminUser == null)

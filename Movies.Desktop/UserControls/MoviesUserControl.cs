@@ -28,21 +28,21 @@ namespace Movies.Desktop.UserControls
         {
             _moviesService = new MoviesApiService();
 
-            await CarregarDadosAsync(); 
+            await CarregarDadosAsync();
         }
 
-        private async Task CarregarDadosAsync() 
+        private async Task CarregarDadosAsync()
         {
             gridMovies.Rows.Clear();
+
             try
             {
-                var tarefasMovies = _moviesService.GetAllAsync();
+                _todosMovies = await _moviesService.GetAllAsync();
 
-                _todosMovies = tarefasMovies.Result;
 
                 PopularGrid(_todosMovies);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
 
                 MessageBox.Show(
@@ -61,11 +61,56 @@ namespace Movies.Desktop.UserControls
                 gridMovies.Rows.Add(
                     m.Id,
                     m.Title,
+                    m.ReleaseDate,
                     m.CategoryName,
-                    m.ReleaseYear,
-                    m.IsFeatured,
-                    m.CreatedAt.ToString("dd/MM/yyyy HH:mm"));
+                    m.Classification,
+                    m.Duration);
 
             }
         }
+
+        private void FiltrarMovies()
+        {
+            var termo = txtPesquisa.Text.Trim().ToLower();
+            if (string.IsNullOrEmpty(termo))
+            {
+                PopularGrid(_todosMovies);
+                return;
+            }
+
+            var filtrados = _todosMovies
+                .Where(m => m.Title.Contains(termo, StringComparison.OrdinalIgnoreCase)
+                || m.CategoryName.Contains(termo, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            PopularGrid(filtrados);
+        }
+
+        private void txtPesquisa_KeyUp(object sender, KeyEventArgs e) => FiltrarMovies();
+
+        private async void btnNovo_Click(object sender, EventArgs e)
+        {
+            using var form = new MovieFormDialog (null); // 🔧 confira o nome real do seu form/dialog
+            if (form.ShowDialog() == DialogResult.OK && form.MovieDto != null)
+            {
+                var (success, _, error) = await _moviesService.CreateAsync(form.MovieDto);
+                if (success)
+                {
+                    MessageBox.Show("✅ Filme criado com sucesso!",
+                        "Sucesso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    await CarregarDadosAsync();
+                }
+                else
+                {
+                    MessageBox.Show($"❌ {error}",
+                      "Erro",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Error);
+                }
+            }
+        }
+        private async void btnAtualizar_Click(object sender, EventArgs e) => await CarregarDadosAsync();
+    }
 }

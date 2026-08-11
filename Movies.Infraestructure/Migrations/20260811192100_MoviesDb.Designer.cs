@@ -12,8 +12,8 @@ using Movies.Infraestructure.Context;
 namespace Movies.Infraestructure.Migrations
 {
     [DbContext(typeof(MoviesDbContext))]
-    [Migration("20260810172547_Teste1")]
-    partial class Teste1
+    [Migration("20260811192100_MoviesDb")]
+    partial class MoviesDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -252,6 +252,10 @@ namespace Movies.Infraestructure.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Classification")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CoverImageUrl")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -264,6 +268,9 @@ namespace Movies.Infraestructure.Migrations
                         .IsRequired()
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
 
                     b.Property<int>("ReleaseDate")
                         .HasColumnType("int");

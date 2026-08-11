@@ -42,7 +42,9 @@ namespace Movies.Application.Services
                 ReleaseDate = dto.ReleaseDate,
                 CoverImageUrl = dto.CoverImageUrl,
                 CategoryId = dto.CategoryId,
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.Now,
+                Classification = dto.Classification,
+                Duration = dto.Duration,
             };
 
             await _movieRepository.AddAsync(movie);
@@ -92,7 +94,9 @@ namespace Movies.Application.Services
                 CoverImageUrl = movie.CoverImageUrl,
                 CategoryId = movie.CategoryId,
                 CategoryName = movie.Category?.Name ?? string.Empty,
-                CreatedAt = movie.CreatedAt
+                CreatedAt = movie.CreatedAt,
+                Classification = movie.Classification,
+                Duration = movie.Duration,
             };
         }
     }
