@@ -43,14 +43,24 @@ namespace Movies.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = movie.Id }, movie);
         }
 
-        [HttpDelete]
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<MoviesDto>> Update(int id, [FromBody] UpdateMovieDto dto)
+        {
+            var updated = await _movieService.UpdateAsync(id, dto);
+            if (updated == null)
+                return NotFound(new { message = "Movie não encontrado" });
+
+            return Ok(updated);
+        }
+
+        [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int id)
         {
             var deleted = await _movieService.DeleteAsync(id);
-
-            if(!deleted)
-                return NotFound(new {message = "Movie não encontrado"});
+            if (!deleted)
+                return NotFound(new { message = "Movie não encontrado" });
 
             return NoContent();
         }

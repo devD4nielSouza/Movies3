@@ -16,9 +16,11 @@ namespace Movies.Desktop.UserControls
     public partial class MoviesUserControl : UserControl
     {
         private MoviesApiService _moviesService = null;
+        private CategoriasApiService _categoriasService = null;
 
 
         private List<MovieResponseDto> _todosMovies = new();
+        private List<CategoriaResponseDto> _categorias = new();
 
         public MoviesUserControl()
         {
@@ -28,6 +30,7 @@ namespace Movies.Desktop.UserControls
         private async void MoviesUserControl_Load(object sender, EventArgs e)
         {
             _moviesService = new MoviesApiService();
+            _categoriasService = new CategoriasApiService();
 
             await CarregarDadosAsync();
         }
@@ -38,7 +41,13 @@ namespace Movies.Desktop.UserControls
 
             try
             {
-                _todosMovies = await _moviesService.GetAllAsync();
+                var tarefaMovies = _moviesService.GetAllAsync();
+                var tarefaCategorias = _categoriasService.GetAllAsync();
+                await Task.WhenAll(tarefaMovies, tarefaCategorias);
+
+                _todosMovies = tarefaMovies.Result;
+                _categorias = tarefaCategorias.Result;
+
 
 
                 PopularGrid(_todosMovies);
@@ -91,7 +100,7 @@ namespace Movies.Desktop.UserControls
 
         private async void btnNovo_Click(object sender, EventArgs e)
         {
-            using var form = new MovieFormDialog (null); // 🔧 confira o nome real do seu form/dialog
+            using var form = new MovieFormDialog(_categorias, null);
             if (form.ShowDialog() == DialogResult.OK && form.MovieDto != null)
             {
                 var (success, _, error) = await _moviesService.CreateAsync(form.MovieDto);
@@ -112,9 +121,19 @@ namespace Movies.Desktop.UserControls
                 }
             }
         }
-        private async void btnAtualizar_Click(object sender, EventArgs e) => await CarregarDadosAsync();
 
-        private void btnEditar_Click(object sender, EventArgs e)
+
+
+
+        private MovieResponseDto? ObterMovieSelecionado()
+        {
+            if (gridMovies.SelectedRows.Count == 0) return null;
+            var row = gridMovies.SelectedRows[0];
+            var id = Convert.ToInt32(row.Cells["colId"].Value);
+            return _todosMovies.FirstOrDefault(g => g.Id == id);
+        }
+
+        private async void btnEditar_Click_1(object sender, EventArgs e)
         {
             var movie = ObterMovieSelecionado();
             if (movie == null)
@@ -132,7 +151,7 @@ namespace Movies.Desktop.UserControls
                 var (success, _, error) = await _moviesService.UpdateAsync(movie.Id, form.UpdateDto);
                 if (success)
                 {
-                    MessageBox.Show("✅ Game atualizado com sucesso",
+                    MessageBox.Show("✅ Filme atualizado com sucesso",
                         "Sucesso",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -146,13 +165,59 @@ namespace Movies.Desktop.UserControls
                         MessageBoxIcon.Error);
                 }
             }
+
         }
-        private MovieResponseDto? ObterMovieSelecionado()
+
+        private async void btnAtualizar_Click_1(object sender, EventArgs e) => await CarregarDadosAsync();
+
+        private async void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (gridMovies.SelectedRows.Count == 0) return null;
-            var row = gridMovies.SelectedRows[0];
-            var id = Convert.ToInt32(row.Cells["colId"].Value);
-            return _todosMovies.FirstOrDefault(g => g.Id == id);
+         
+            var movie = ObterMovieSelecionado();
+            if (movie == null)
+            {
+                MessageBox.Show("Selecione um filme para excluir.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            var resposta = MessageBox.Show(
+                $"Deseja realmente excluir o filme '{movie.Title}'?",
+                "Confirmar exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resposta != DialogResult.Yes) return;
+
+            try
+            {
+                var (success, error) = await _moviesService.DeleteAsync(movie.Id);
+                if (success)
+                {
+                    MessageBox.Show("✅ Filme excluído com sucesso.",
+                        "Sucesso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    await CarregarDadosAsync();
+                }
+                else
+                {
+                    MessageBox.Show($"❌ {error}",
+                        "Erro",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"❌ Erro ao excluir: {ex.Message}",
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
-}
+    }
+

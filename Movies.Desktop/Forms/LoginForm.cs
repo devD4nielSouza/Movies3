@@ -19,7 +19,7 @@ namespace Movies.Desktop.Forms
         {
             InitializeComponent();
         }
-
+ 
         private void btnFechar_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
@@ -38,7 +38,7 @@ namespace Movies.Desktop.Forms
             txtSenha.Text = "Admin@123";
         }
 
-        private async Task btnEntrar_Click(object sender, EventArgs e)
+        private async void btnEntrar_Click(object sender, EventArgs e)
         {
             ExibirErro(string.Empty);
 

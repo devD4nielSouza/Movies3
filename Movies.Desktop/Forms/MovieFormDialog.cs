@@ -11,7 +11,7 @@ namespace Movies.Desktop.Forms
         /// </summary>
         public UpdateMovieDto? UpdateDto { get; private set; }
 
-        private List<CategoryResponseDto> _categorias = new();
+        private List<CategoriaResponseDto> _categorias = new();
 
         private MovieResponseDto? _movieExistente;
         public MovieFormDialog()
@@ -19,7 +19,7 @@ namespace Movies.Desktop.Forms
             InitializeComponent();
         }
 
-        public MovieFormDialog(List<CategoryResponseDto> categorias, MovieResponseDto? movie)
+        public MovieFormDialog(List<CategoriaResponseDto> categorias, MovieResponseDto? movie)
         {
             _categorias = categorias;
             _movieExistente = movie;
@@ -28,7 +28,7 @@ namespace Movies.Desktop.Forms
 
         private void MovieFormDialog_Load(object sender, EventArgs e)
         {
-            if (DesignMode) return;
+          
 
             //Configurar titulo baseado no modo (criação/edição)
             this.Text = _movieExistente == null ? "Novo filme" : "Editar filme";
@@ -52,6 +52,11 @@ namespace Movies.Desktop.Forms
             txtDescricao.Text = _movieExistente.Description;
             txtAno.Text = _movieExistente.ReleaseDate.ToString();
             txtCoverUrl.Text = _movieExistente.CoverImageUrl;
+            txtClassificacao.Text = _movieExistente.Classification;
+
+            // Duration está salvo em horas; convertemos de volta para minutos para exibir no campo
+            if (_movieExistente.Duration > 0)
+                txtDuracao.Text = (_movieExistente.Duration * 60).ToString();
 
             var idx = _categorias.FindIndex(c => c.Id == _movieExistente.CategoryId);
             if (idx >= 0) cmbCategoria.SelectedIndex = idx + 1;
@@ -92,6 +97,13 @@ namespace Movies.Desktop.Forms
             var categoriaIdx = cmbCategoria.SelectedIndex - 1;
             var categoriaId = _categorias[categoriaIdx].Id;
 
+            // Converte os minutos digitados para horas (arredondado)
+            int duracaoEmHoras = 0;
+            if (!string.IsNullOrWhiteSpace(txtDuracao.Text) && int.TryParse(txtDuracao.Text.Trim(), out int minutos))
+            {
+                duracaoEmHoras = (int)Math.Round(minutos / 60.0);
+            }
+
             if (_movieExistente == null)
             {
                 MovieDto = new CreateMovieDto
@@ -101,6 +113,8 @@ namespace Movies.Desktop.Forms
                     ReleaseDate = ano,
                     CoverImageUrl = txtCoverUrl.Text.Trim(),
                     CategoryId = categoriaId,
+                    Duration = duracaoEmHoras,                       
+                    Classification = txtClassificacao.Text.Trim()
                 };
             }
             else
@@ -112,6 +126,8 @@ namespace Movies.Desktop.Forms
                     ReleaseDate = ano,
                     CoverImageUrl = txtCoverUrl.Text.Trim(),
                     CategoryId = categoriaId,
+                    Duration = duracaoEmHoras,                     
+                    Classification = txtClassificacao.Text.Trim()
                 };
             }
 

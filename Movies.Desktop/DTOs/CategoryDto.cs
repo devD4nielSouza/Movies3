@@ -1,6 +1,6 @@
 ﻿namespace Movies.Desktop.DTOs
 {
-    public class CategoryResponseDto
+    public class CategoriaResponseDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

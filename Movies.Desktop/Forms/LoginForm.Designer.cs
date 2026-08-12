@@ -163,6 +163,7 @@
             btnEntrar.Size = new Size(137, 42);
             btnEntrar.TabIndex = 4;
             btnEntrar.Text = "Entrar";
+            btnEntrar.Click += btnEntrar_Click;
             // 
             // lblVersao
             // 
