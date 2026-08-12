@@ -1,4 +1,5 @@
 ﻿using Movies.Desktop.DTOs;
+using Movies.Desktop.Forms;
 using Movies.Desktop.Services;
 using System;
 using System.Collections.Generic;
@@ -112,5 +113,46 @@ namespace Movies.Desktop.UserControls
             }
         }
         private async void btnAtualizar_Click(object sender, EventArgs e) => await CarregarDadosAsync();
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            var movie = ObterMovieSelecionado();
+            if (movie == null)
+            {
+                MessageBox.Show($"Selecione um filme para editar.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            using var form = new MovieFormDialog(_categorias, movie);
+            if (form.ShowDialog() == DialogResult.OK && form.UpdateDto != null)
+            {
+                var (success, _, error) = await _moviesService.UpdateAsync(movie.Id, form.UpdateDto);
+                if (success)
+                {
+                    MessageBox.Show("✅ Game atualizado com sucesso",
+                        "Sucesso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    await CarregarDadosAsync();
+                }
+                else
+                {
+                    MessageBox.Show($"❌ {error}",
+                        "Erro",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+        }
+        private MovieResponseDto? ObterMovieSelecionado()
+        {
+            if (gridMovies.SelectedRows.Count == 0) return null;
+            var row = gridMovies.SelectedRows[0];
+            var id = Convert.ToInt32(row.Cells["colId"].Value);
+            return _todosMovies.FirstOrDefault(g => g.Id == id);
+        }
     }
 }
