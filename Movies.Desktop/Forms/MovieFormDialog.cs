@@ -98,11 +98,11 @@ namespace Movies.Desktop.Forms
             var categoriaId = _categorias[categoriaIdx].Id;
 
             // Converte os minutos digitados para horas (arredondado)
-            int duracaoEmHoras = 0;
-            if (!string.IsNullOrWhiteSpace(txtDuracao.Text) && int.TryParse(txtDuracao.Text.Trim(), out int minutos))
-            {
-                duracaoEmHoras = (int)Math.Round(minutos / 60.0);
-            }
+            //int duracaoEmHoras = 0;
+            //if (!string.IsNullOrWhiteSpace(txtDuracao.Text) && int.TryParse(txtDuracao.Text.Trim(), out int minutos))
+            //{
+            //    duracaoEmHoras = (int)Math.Round(minutos / 60.0);
+            //}
 
             if (_movieExistente == null)
             {
@@ -113,7 +113,7 @@ namespace Movies.Desktop.Forms
                     ReleaseDate = ano,
                     CoverImageUrl = txtCoverUrl.Text.Trim(),
                     CategoryId = categoriaId,
-                    Duration = duracaoEmHoras,                       
+                    Duration = Convert.ToInt32(txtDuracao.Text.Trim()),                       
                     Classification = txtClassificacao.Text.Trim()
                 };
             }
@@ -126,7 +126,7 @@ namespace Movies.Desktop.Forms
                     ReleaseDate = ano,
                     CoverImageUrl = txtCoverUrl.Text.Trim(),
                     CategoryId = categoriaId,
-                    Duration = duracaoEmHoras,                     
+                    Duration = Convert.ToInt32(txtDuracao.Text.Trim()),                     
                     Classification = txtClassificacao.Text.Trim()
                 };
             }

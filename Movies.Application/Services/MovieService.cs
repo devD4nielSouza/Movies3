@@ -58,12 +58,16 @@ namespace Movies.Application.Services
             var movie = await _movieRepository.GetByIdAsync(id);
             if (movie == null) return null;
 
-            // Atualiza os campos do game com os dados do DTO
+            // Atualiza os campos do filme com os dados do DTO
             movie.Title = dto.Title;
             movie.Description = dto.Description;
             movie.ReleaseDate = dto.ReleaseDate;
             movie.CoverImageUrl = dto.CoverImageUrl;
             movie.CategoryId = dto.CategoryId;
+            
+            // Adicione as propriedades faltantes:
+            movie.Classification = dto.Classification;
+            movie.Duration = dto.Duration;
 
             await _movieRepository.UpdateAsync(movie);
             return MapToDto(movie);

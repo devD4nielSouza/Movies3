@@ -151,11 +151,11 @@
             // lblSessao
             // 
             lblSessao.AutoSize = true;
-            lblSessao.Font = new Font("Century Schoolbook", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSessao.Font = new Font("Yu Gothic UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSessao.ForeColor = Color.White;
             lblSessao.Location = new Point(12, 386);
             lblSessao.Name = "lblSessao";
-            lblSessao.Size = new Size(19, 16);
+            lblSessao.Size = new Size(16, 15);
             lblSessao.TabIndex = 3;
             lblSessao.Text = "...";
             // 
