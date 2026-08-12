@@ -53,10 +53,8 @@ namespace Movies.Desktop.Forms
             txtAno.Text = _movieExistente.ReleaseDate.ToString();
             txtCoverUrl.Text = _movieExistente.CoverImageUrl;
             txtClassificacao.Text = _movieExistente.Classification;
-
-            // Duration está salvo em horas; convertemos de volta para minutos para exibir no campo
-            if (_movieExistente.Duration > 0)
-                txtDuracao.Text = (_movieExistente.Duration * 60).ToString();
+            txtDuracao.Text = _movieExistente.Duration.ToString();
+          
 
             var idx = _categorias.FindIndex(c => c.Id == _movieExistente.CategoryId);
             if (idx >= 0) cmbCategoria.SelectedIndex = idx + 1;

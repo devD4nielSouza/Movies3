@@ -113,7 +113,8 @@ namespace Movies.Desktop.Forms
             if (e.KeyCode == Keys.Enter) btnEntrar_Click(sender, e);
         }
 
-        private void ExibirErro(string mensagem)
+        private void 
+            ExibirErro(string mensagem)
         {
             if (string.IsNullOrEmpty(mensagem))
             {
