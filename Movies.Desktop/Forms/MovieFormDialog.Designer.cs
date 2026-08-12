@@ -58,9 +58,9 @@
             lblCampTitulo = new Label();
             lblTituloForm = new Label();
             guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            label1 = new Label();
-            guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
-            label2 = new Label();
+            lblDuracao = new Label();
+            txtDuracao = new Guna.UI2.WinForms.Guna2TextBox();
+            lblClassificacao = new Label();
             SuspendLayout();
             // 
             // cmbCategoria
@@ -68,7 +68,7 @@
             cmbCategoria.BackColor = Color.White;
             cmbCategoria.ForeColor = Color.Black;
             cmbCategoria.FormattingEnabled = true;
-            cmbCategoria.Location = new Point(29, 424);
+            cmbCategoria.Location = new Point(29, 423);
             cmbCategoria.Name = "cmbCategoria";
             cmbCategoria.Size = new Size(473, 23);
             cmbCategoria.TabIndex = 18;
@@ -90,6 +90,7 @@
             btnCancelar.Size = new Size(95, 45);
             btnCancelar.TabIndex = 16;
             btnCancelar.Text = "Cancelar";
+            btnCancelar.Click += btnCancelar_Click_1;
             // 
             // btnSalvar
             // 
@@ -108,6 +109,7 @@
             btnSalvar.Size = new Size(124, 45);
             btnSalvar.TabIndex = 17;
             btnSalvar.Text = "Criar";
+            btnSalvar.Click += btnSalvar_Click_1;
             // 
             // txtDescricao
             // 
@@ -261,7 +263,7 @@
             lblTituloForm.AutoSize = true;
             lblTituloForm.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloForm.ForeColor = Color.FromArgb(102, 38, 121);
-            lblTituloForm.Location = new Point(39, 32);
+            lblTituloForm.Location = new Point(39, 28);
             lblTituloForm.Name = "lblTituloForm";
             lblTituloForm.Size = new Size(55, 21);
             lblTituloForm.TabIndex = 10;
@@ -282,7 +284,7 @@
             guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             guna2TextBox1.Font = new Font("Segoe UI", 9F);
             guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(29, 468);
+            guna2TextBox1.Location = new Point(29, 476);
             guna2TextBox1.Name = "guna2TextBox1";
             guna2TextBox1.PlaceholderForeColor = Color.Gray;
             guna2TextBox1.PlaceholderText = "Ex: Livre";
@@ -291,49 +293,49 @@
             guna2TextBox1.Size = new Size(205, 36);
             guna2TextBox1.TabIndex = 14;
             // 
-            // label1
+            // lblDuracao
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(29, 292);
-            label1.Name = "label1";
-            label1.Size = new Size(65, 15);
-            label1.TabIndex = 6;
-            label1.Text = "DURAÇÂO";
+            lblDuracao.AutoSize = true;
+            lblDuracao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDuracao.Location = new Point(29, 292);
+            lblDuracao.Name = "lblDuracao";
+            lblDuracao.Size = new Size(65, 15);
+            lblDuracao.TabIndex = 6;
+            lblDuracao.Text = "DURAÇÂO";
             // 
-            // guna2TextBox2
+            // txtDuracao
             // 
-            guna2TextBox2.BackColor = Color.Transparent;
-            guna2TextBox2.BorderColor = Color.DarkGray;
-            guna2TextBox2.BorderRadius = 6;
-            guna2TextBox2.CustomizableEdges = customizableEdges15;
-            guna2TextBox2.DefaultText = "";
-            guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox2.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox2.FillColor = Color.WhiteSmoke;
-            guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Font = new Font("Segoe UI", 9F);
-            guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Location = new Point(29, 310);
-            guna2TextBox2.Name = "guna2TextBox2";
-            guna2TextBox2.PlaceholderForeColor = Color.Gray;
-            guna2TextBox2.PlaceholderText = "Em minutos";
-            guna2TextBox2.SelectedText = "";
-            guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2TextBox2.Size = new Size(124, 36);
-            guna2TextBox2.TabIndex = 12;
+            txtDuracao.BackColor = Color.Transparent;
+            txtDuracao.BorderColor = Color.DarkGray;
+            txtDuracao.BorderRadius = 6;
+            txtDuracao.CustomizableEdges = customizableEdges15;
+            txtDuracao.DefaultText = "";
+            txtDuracao.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtDuracao.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtDuracao.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtDuracao.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtDuracao.FillColor = Color.WhiteSmoke;
+            txtDuracao.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtDuracao.Font = new Font("Segoe UI", 9F);
+            txtDuracao.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtDuracao.Location = new Point(29, 310);
+            txtDuracao.Name = "txtDuracao";
+            txtDuracao.PlaceholderForeColor = Color.Gray;
+            txtDuracao.PlaceholderText = "Em minutos";
+            txtDuracao.SelectedText = "";
+            txtDuracao.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtDuracao.Size = new Size(124, 36);
+            txtDuracao.TabIndex = 12;
             // 
-            // label2
+            // lblClassificacao
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(29, 450);
-            label2.Name = "label2";
-            label2.Size = new Size(82, 15);
-            label2.TabIndex = 6;
-            label2.Text = "URL DA CAPA";
+            lblClassificacao.AutoSize = true;
+            lblClassificacao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblClassificacao.Location = new Point(29, 454);
+            lblClassificacao.Name = "lblClassificacao";
+            lblClassificacao.Size = new Size(95, 15);
+            lblClassificacao.TabIndex = 6;
+            lblClassificacao.Text = "CLASSIFICAÇÂO";
             // 
             // MovieFormDialog
             // 
@@ -344,14 +346,14 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Controls.Add(txtDescricao);
-            Controls.Add(guna2TextBox2);
+            Controls.Add(txtDuracao);
             Controls.Add(txtCoverUrl);
             Controls.Add(txtAno);
             Controls.Add(guna2TextBox1);
             Controls.Add(txtTitulo);
-            Controls.Add(label1);
+            Controls.Add(lblDuracao);
             Controls.Add(lblCampCategoria);
-            Controls.Add(label2);
+            Controls.Add(lblClassificacao);
             Controls.Add(lblCampCover);
             Controls.Add(lblCampAno);
             Controls.Add(lblCampDesc);
@@ -380,8 +382,8 @@
         private Label lblCampTitulo;
         private Label lblTituloForm;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
-        private Label label2;
+        private Label lblDuracao;
+        private Guna.UI2.WinForms.Guna2TextBox txtDuracao;
+        private Label lblClassificacao;
     }
 }
